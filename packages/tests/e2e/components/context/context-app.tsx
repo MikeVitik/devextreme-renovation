@@ -58,6 +58,6 @@ export default class ContextApp extends JSXComponent(Props) {
   }
 
   setPageIndex(pageIndex: number) {
-    this.pageIndex = pageIndex;
+    this.pageIndex(pageIndex);
   }
 }

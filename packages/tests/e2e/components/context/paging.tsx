@@ -5,7 +5,7 @@ import {
   Event,
   Consumer,
   Effect,
-  TwoWay,
+  OneWay,
 } from "@devextreme-generator/declarations";
 
 import { Context } from "./context";
@@ -17,7 +17,7 @@ function view(model: PagingComponent) {
 
 @ComponentBindings()
 class Props {
-  @TwoWay() pageIndex: number = 0;
+  @OneWay() pageIndex: number = 0;
   @Event() pageIndexChange: (pageIndex: number) => void = () => void 0;
 }
 
@@ -35,7 +35,7 @@ export default class PagingComponent extends JSXComponent<Props, "pageIndex">(
     this.contextConsumer.registerPlugin("paging", {
       pageIndex: this.props.pageIndex,
       setPageIndex: (pageIndex: number) => {
-        this.props.pageIndex = pageIndex;
+        this.props.pageIndex(pageIndex);
       },
     });
   }
